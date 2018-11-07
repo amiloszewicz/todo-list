@@ -19,7 +19,7 @@ class NewToDo extends React.Component {
       inputValue: ''
     };
 
-    this.getInputValue = this.getInputValue.bind(this);
+    // this.getInputValue = this.getInputValue.bind(this);
     this.showInputValue = this.showInputValue.bind(this);
   }
 
@@ -32,7 +32,7 @@ class NewToDo extends React.Component {
     )
   }
 
-  getInputValue(event) {
+  getInputValue = (event) => {
     this.setState({
       inputValue: event.target.value
     });
