@@ -13,13 +13,34 @@ class Header extends React.Component {
 }
 
 class NewToDo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    };
+
+    this.getInputValue = this.getInputValue.bind(this);
+    this.showInputValue = this.showInputValue.bind(this);
+  }
+
   render() {
     return (
       <div>
-        <input></input>
-        <button>Add</button>
+        <input id="newToDoItem" value={ this.state.inputValue } onChange={ this.getInputValue }></input>
+        <button onClick={ this.showInputValue }>Add</button>
       </div>
     )
+  }
+
+  getInputValue(event) {
+    this.setState({
+      inputValue: event.target.value
+    });
+  }
+
+  showInputValue(event) {
+    console.log(this.state.inputValue);
+    event.preventDefault();
   }
 }
 
@@ -35,9 +56,7 @@ class ToDoItem extends React.Component {
   render() {
     return (
       <div>
-        <checkbox/>
         <span></span>
-        <button>del</button>
       </div>
     )
   }
