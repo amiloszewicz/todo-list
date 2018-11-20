@@ -15,12 +15,28 @@ class App extends React.Component {
     };
     this.inputElement = React.createRef();
   }
+
   handleInput = e => {
-    console.log(`hello input`);
+    const itemText = e.target.value;
+    const currentItem = { text: itemText, key: Date.now() };
+    this.setState({
+      currentItem
+    });
   };
+
   addItem = () => {
-    console.log(`hello add item`);
+    const newItem = this.state.currentItem;
+
+    if (newItem !== '') {
+      console.log(newItem);
+      const items = [...this.state.items, newItem];
+      this.setState({
+        items: items,
+        currentItem: { text: '', key: '' }
+      });
+    }
   };
+
   render() {
     return (
       <div>
