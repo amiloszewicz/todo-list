@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import TodoList from './TodoList';
 import Header from './Header';
+import TodoList from './TodoList';
+import TodoItems from './TodoItems';
 
 import { runInThisContext } from 'vm';
 
@@ -47,6 +48,7 @@ class App extends React.Component {
           handleInput={this.handleInput}
           currentItem={this.state.currentItem.text}
         />
+        <TodoItems entries={this.state.items} />
       </div>
     );
   }
