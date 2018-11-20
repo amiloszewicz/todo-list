@@ -12,7 +12,7 @@ class Header extends React.Component {
   }
 }
 
-class NewToDo extends React.Component {
+class ToDoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +27,9 @@ class NewToDo extends React.Component {
   };
 
   showInputValue = () => {
+    this.setState({
+      inputValue: this.state.inputValue
+    });
     console.log(this.state.inputValue);
     this.setState({
       inputValue: ''
@@ -36,28 +39,14 @@ class NewToDo extends React.Component {
   render() {
     return (
       <div>
-        <input
-          id='newToDoItem'
-          value={this.state.inputValue}
-          onChange={this.getInputValue}
-        />
-        <button onClick={this.showInputValue}>Add</button>
-      </div>
-    );
-  }
-}
-
-class ToDoList extends React.Component {
-  render() {
-    return <ToDoItem />;
-  }
-}
-
-class ToDoItem extends React.Component {
-  render() {
-    return (
-      <div>
-        <span></span>
+        <form>
+          <input
+            id='newToDoItem'
+            value={this.state.inputValue}
+            onChange={this.getInputValue}
+          />
+          <button onClick={this.showInputValue}>Add</button>
+        </form>
       </div>
     );
   }
@@ -68,7 +57,6 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <NewToDo />
         <ToDoList />
       </div>
     );
