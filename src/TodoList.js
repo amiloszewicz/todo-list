@@ -1,37 +1,19 @@
-class ToDoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: ''
-    };
-  }
+import React, { Component } from 'react';
 
-  getInputValue = event => {
-    this.setState({
-      inputValue: event.target.value
-    });
-  };
-
-  showInputValue = () => {
-    this.setState({
-      inputValue: this.state.inputValue
-    });
-    console.log(this.state.inputValue);
-    this.setState({
-      inputValue: ''
-    });
-  };
-
+class TodoList extends Component {
   render() {
     return (
       <div>
         <input
-          id='newToDoItem'
-          value={this.state.inputValue}
-          onChange={this.getInputValue}
+          placeholder='New task'
+          ref={this.props.inputElement}
+          value={this.props.currentItem.text}
+          onChange={this.props.handleInput}
         />
-        <button onClick={this.props.showInputValue}>Add</button>
+        <button onClick={this.props.addItem}>Add</button>
       </div>
     );
   }
 }
+
+export default TodoList;
