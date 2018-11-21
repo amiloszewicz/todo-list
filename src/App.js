@@ -25,8 +25,10 @@ class App extends React.Component {
     });
   };
 
-  addItem = () => {
+  addItem = e => {
     const newItem = this.state.currentItem;
+    const itemText = e.target.value;
+    console.log(itemText);
 
     if (newItem !== '') {
       console.log(newItem);
@@ -36,6 +38,15 @@ class App extends React.Component {
         currentItem: { text: '', key: '' }
       });
     }
+  };
+
+  deleteItem = key => {
+    const filteredItems = this.state.items.filter(item => {
+      return item.key !== key;
+    });
+    this.setState({
+      items: filteredItems
+    });
   };
 
   render() {
@@ -48,7 +59,8 @@ class App extends React.Component {
           handleInput={this.handleInput}
           currentItem={this.state.currentItem.text}
         />
-        <TodoItems entries={this.state.items} />
+        <TodoItems entries={this.state.items}
+        deleteItem={this.deleteItem} />
       </div>
     );
   }
