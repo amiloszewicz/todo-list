@@ -12,40 +12,41 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      toDoItems: [],
       currentItem: { text: '', key: '' },
+      toDoItems: [],
       doneItems: []
     };
     this.inputElement = React.createRef();
   }
 
   handleInput = e => {
-    const itemText = e.target.value;
-    const currentItem = { text: itemText, key: Date.now() };
+    const toDoItemText = e.target.value;
+    const currentItem = { text: toDoItemText, key: Date.now() };
+
     this.setState({
       currentItem
     });
   };
 
   addItem = e => {
+    e.preventDefault();
     const newItem = this.state.currentItem;
-    const itemText = e.target.value;
-    console.log(itemText);
+    const toDoItemsWithNewItem = [...this.state.toDoItems, newItem];
+    //  'e' is as a form tag for this function;
+    //  targets input tag and cleans it value to none;
+    e.target[0].value = '';
 
-    if (newItem !== '') {
-      console.log(newItem);
-      const toDoItems = [...this.state.toDoItems, newItem];
-      this.setState({
-        toDoItems: toDoItems,
-        currentItem: { text: '', key: '' }
-      });
-    }
+    this.setState({
+      toDoItems: toDoItemsWithNewItem,
+      currentItem: { text: '', key: '' }
+    });
   };
 
   deleteItem = key => {
     const filteredItems = this.state.toDoItems.filter(item => {
       return item.key !== key;
     });
+
     this.setState({
       toDoItems: filteredItems
     });
@@ -53,7 +54,7 @@ class App extends React.Component {
 
   doneItem = key => {
     const filteredDoneItem = this.state.toDoItems.filter(item => {
-      return item.key == key;
+      return item.key === key;
     });
     const filteredItems = this.state.toDoItems.filter(item => {
       return item.key !== key;
@@ -62,6 +63,7 @@ class App extends React.Component {
     const doneItemKey = filteredDoneItem[0].key;
     const doneItem = { text: doneItemText, key: doneItemKey };
     const doneItems = [...this.state.doneItems, doneItem];
+
     this.setState({
       toDoItems: filteredItems,
       doneItems: doneItems
