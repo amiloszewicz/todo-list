@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Header from './Header';
 import TodoList from './TodoList';
 import TodoItems from './TodoItems';
-import DoneItems from './doneItems.js';
+import DoneItems from './DoneItems.js';
 
 import { runInThisContext } from 'vm';
 
@@ -31,15 +31,19 @@ class App extends React.Component {
   addItem = e => {
     e.preventDefault();
     const newItem = this.state.currentItem;
-    const toDoItemsWithNewItem = [...this.state.toDoItems, newItem];
-    //  'e' is as a form tag for this function;
-    //  targets input tag and cleans it value to none;
-    e.target[0].value = '';
 
-    this.setState({
-      toDoItems: toDoItemsWithNewItem,
-      currentItem: { text: '', key: '' }
-    });
+    if (newItem.text !== '') {
+      const toDoItemsWithNewItem = [...this.state.toDoItems, newItem];
+
+      //  'e' is as a form tag for this function;
+      //  targets input tag and cleans it value to none;
+      e.target[0].value = '';
+
+      this.setState({
+        toDoItems: toDoItemsWithNewItem,
+        currentItem: { text: '', key: '' }
+      });
+    }
   };
 
   deleteItem = key => {
