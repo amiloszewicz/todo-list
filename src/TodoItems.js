@@ -3,9 +3,15 @@ import React, { Component } from 'react';
 class TodoItems extends Component {
   createTasks = item => {
     return (
-      <li key={item.key} onClick={() => this.props.deleteItem(item.key)}>{item.text}</li>
+      <div key={item.key}>
+        <li>
+          <button onClick={() => this.props.doneItem(item.key)}>done</button>
+          {item.text}
+          <button onClick={() => this.props.deleteItem(item.key)}>del</button>
+        </li>
+      </div>
     );
-  }
+  };
   render() {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);

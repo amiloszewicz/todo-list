@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Header from './Header';
 import TodoList from './TodoList';
 import TodoItems from './TodoItems';
+import DoneItems from './doneItems.js';
 
 import { runInThisContext } from 'vm';
 
@@ -11,8 +12,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: [],
-      currentItem: { text: '', key: '' }
+      toDoItems: [],
+      currentItem: { text: '', key: '' },
+      doneItems: []
     };
     this.inputElement = React.createRef();
   }
@@ -32,20 +34,37 @@ class App extends React.Component {
 
     if (newItem !== '') {
       console.log(newItem);
-      const items = [...this.state.items, newItem];
+      const toDoItems = [...this.state.toDoItems, newItem];
       this.setState({
-        items: items,
+        toDoItems: toDoItems,
         currentItem: { text: '', key: '' }
       });
     }
   };
 
   deleteItem = key => {
-    const filteredItems = this.state.items.filter(item => {
+    const filteredItems = this.state.toDoItems.filter(item => {
       return item.key !== key;
     });
     this.setState({
-      items: filteredItems
+      toDoItems: filteredItems
+    });
+  };
+
+  doneItem = key => {
+    const filteredDoneItem = this.state.toDoItems.filter(item => {
+      return item.key == key;
+    });
+    const filteredItems = this.state.toDoItems.filter(item => {
+      return item.key !== key;
+    });
+    const doneItemText = filteredDoneItem[0].text;
+    const doneItemKey = filteredDoneItem[0].key;
+    const doneItem = { text: doneItemText, key: doneItemKey };
+    const doneItems = [...this.state.doneItems, doneItem];
+    this.setState({
+      toDoItems: filteredItems,
+      doneItems: doneItems
     });
   };
 
@@ -59,8 +78,12 @@ class App extends React.Component {
           handleInput={this.handleInput}
           currentItem={this.state.currentItem.text}
         />
-        <TodoItems entries={this.state.items}
-        deleteItem={this.deleteItem} />
+        <TodoItems
+          entries={this.state.toDoItems}
+          deleteItem={this.deleteItem}
+          doneItem={this.doneItem}
+        />
+        <DoneItems doneEntries={this.state.doneItems} />
       </div>
     );
   }
