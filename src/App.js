@@ -53,14 +53,21 @@ class App extends React.Component {
   };
 
   doneItem = key => {
+    //  returns new array, with only 1 item, which will be set as done
     const filteredDoneItem = this.state.toDoItems.filter(item => {
       return item.key === key;
     });
+
+    //  returns new array, with items which aren't done;
+    //  everything what is not equal to item.key clicked via 'done' button;
     const filteredItems = this.state.toDoItems.filter(item => {
       return item.key !== key;
     });
+
+    // above function returns array so we need to enter first index;
     const doneItemText = filteredDoneItem[0].text;
     const doneItemKey = filteredDoneItem[0].key;
+
     const doneItem = { text: doneItemText, key: doneItemKey };
     const doneItems = [...this.state.doneItems, doneItem];
 
