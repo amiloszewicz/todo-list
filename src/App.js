@@ -64,7 +64,7 @@ class App extends React.Component {
 
     //  returns new array, with items which aren't done;
     //  everything what is not equal to item.key clicked via 'done' button;
-    const filteredItems = this.state.toDoItems.filter(item => {
+    const filteredNotDoneItems = this.state.toDoItems.filter(item => {
       return item.key !== key;
     });
 
@@ -77,7 +77,7 @@ class App extends React.Component {
     const doneItems = [...this.state.doneItems, doneItem];
 
     this.setState({
-      toDoItems: filteredItems,
+      toDoItems: filteredNotDoneItems,
       doneItems: doneItems
     });
   };
