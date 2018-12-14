@@ -68,7 +68,8 @@ class App extends React.Component {
       return item.key !== key;
     });
 
-    // above function returns array so we need to enter first index;
+    // filteredItems and filteredDoneItem function returns array (even if it's array with 1 elem)
+    // so we enter first index to get text & key from object;
     const doneItemText = filteredDoneItem[0].text;
     const doneItemKey = filteredDoneItem[0].key;
 
