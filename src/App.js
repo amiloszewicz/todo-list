@@ -33,7 +33,7 @@ class App extends React.Component {
     const newItem = this.state.currentItem;
 
     if (newItem.text !== '') {
-      const toDoItemsWithNewItem = [...this.state.toDoItems, newItem];
+      const toDoItemsWithNewItem = [newItem, ...this.state.toDoItems];
 
       //  'e' is as a form tag for this function;
       //  targets input tag and cleans it value to none;
@@ -74,7 +74,7 @@ class App extends React.Component {
     const doneItemKey = filteredDoneItem[0].key;
 
     const doneItem = { text: doneItemText, key: doneItemKey };
-    const doneItems = [...this.state.doneItems, doneItem];
+    const doneItems = [doneItem, ...this.state.doneItems];
 
     this.setState({
       toDoItems: filteredNotDoneItems,
