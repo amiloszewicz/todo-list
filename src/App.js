@@ -33,6 +33,7 @@ class App extends React.Component {
     const newItem = this.state.currentItem;
 
     if (newItem.text !== '') {
+      // 3 x dots are merging arrays in one with ES6 Array spread
       const toDoItemsWithNewItem = [newItem, ...this.state.toDoItems];
 
       //  'e' is as a form tag for this function;
@@ -74,6 +75,7 @@ class App extends React.Component {
     const doneItemKey = filteredDoneItem[0].key;
 
     const doneItem = { text: doneItemText, key: doneItemKey };
+    // 3 x dots are merging arrays in one with ES6 Array spread
     const doneItems = [doneItem, ...this.state.doneItems];
 
     this.setState({
