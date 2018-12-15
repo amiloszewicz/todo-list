@@ -13,7 +13,14 @@ class DoneItems extends Component {
     const doneEntries = this.props.doneEntries;
     const doneListItems = doneEntries.map(this.doneItem);
 
-    return <ul className='doneItemsList'>{doneListItems}</ul>;
+    return (
+      <ul
+        className='doneItemsList'
+        style={{ display: this.props.displayDoneList }}
+      >
+        {doneListItems}
+      </ul>
+    );
   }
 }
 

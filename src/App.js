@@ -5,6 +5,7 @@ import Header from './Header';
 import TodoList from './TodoList';
 import TodoItems from './TodoItems';
 import DoneItems from './DoneItems.js';
+import ShowHideButton from './ShowHideButton.js';
 
 import { runInThisContext } from 'vm';
 
@@ -14,7 +15,8 @@ class App extends React.Component {
     this.state = {
       currentItem: { text: '', key: '' },
       toDoItems: [],
-      doneItems: []
+      doneItems: [],
+      showDoneList: { status: false, name: 'show' }
     };
     this.inputElement = React.createRef();
   }
@@ -84,6 +86,22 @@ class App extends React.Component {
     });
   };
 
+  showHideDoneItemsList = () => {
+    const showDoneListStatus = this.state.showDoneList.status;
+    const showDoneListName = this.state.showDoneList.name;
+
+    if (showDoneListStatus === false) {
+      this.setState({
+        showDoneList: { status: !showDoneListStatus, name: 'hide' }
+      });
+    } else {
+      console.log('true');
+      this.setState({
+        showDoneList: { status: !showDoneListStatus, name: 'show' }
+      });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -99,7 +117,13 @@ class App extends React.Component {
           deleteItem={this.deleteItem}
           doneItem={this.doneItem}
         />
-        <DoneItems doneEntries={this.state.doneItems} />
+        <ShowHideButton
+          showDoneList={this.state.showDoneList}
+          showHideDoneItemsList={this.showHideDoneItemsList}
+        />
+        {this.state.showDoneList.status ? (
+          <DoneItems doneEntries={this.state.doneItems} />
+        ) : null}
       </div>
     );
   }
