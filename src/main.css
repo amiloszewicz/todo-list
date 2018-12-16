@@ -1,6 +1,9 @@
 body {
   display: grid;
   grid-template-columns: auto auto auto;
+  font-family: 'Indie Flower', cursive;
+  background-color: #f2f2f2;
+  color: #262626;
 }
 
 #app {
