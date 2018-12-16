@@ -1,3 +1,9 @@
-/* .doneItemsList {
-  display: 
-} */
+body {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+#app {
+  grid-column: 2;
+  justify-self: center;
+}

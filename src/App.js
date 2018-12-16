@@ -88,14 +88,12 @@ class App extends React.Component {
 
   showHideDoneItemsList = () => {
     const showDoneListStatus = this.state.showDoneList.status;
-    const showDoneListName = this.state.showDoneList.name;
 
     if (showDoneListStatus === false) {
       this.setState({
         showDoneList: { status: !showDoneListStatus, name: 'hide' }
       });
     } else {
-      console.log('true');
       this.setState({
         showDoneList: { status: !showDoneListStatus, name: 'show' }
       });
