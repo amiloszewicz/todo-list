@@ -6,7 +6,111 @@ body {
   color: #262626;
 }
 
+/* app container & basic grid style */
 #app {
   grid-column: 2;
   justify-self: center;
+  width: 600px;
+  max-width: 600px;
+}
+
+/* main title style */
+.header {
+  text-align: center;
+  font-size: 48px;
+}
+
+/* form and children */
+.todoForm {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 90% auto;
+}
+
+.todoInput {
+  font-family: 'Indie Flower', cursive;
+  background-color: #f2f2f2;
+  border: 1px solid #262626;
+  line-height: 50px;
+  font-size: 26px;
+  padding: 0 15px;
+  border-radius: 25px;
+}
+
+::placeholder {
+  color: #262626;
+  font-family: 'Indie Flower', cursive;
+}
+
+/* basic, common style for all buttons */
+button {
+  font-family: 'Indie Flower', cursive;
+  color: #262626;
+  background-color: transparent;
+  border: 1px solid #262626;
+  border-radius: 25px;
+  font-size: 26px;
+  line-height: 50px;
+}
+
+.todoInput:focus {outline:0;}
+button:focus {outline:0;}
+
+/* indyvidual style for buttons  */
+.submitNewToDoItemBtn {
+  margin-left: 5px;
+  padding: 0 10px;
+}
+
+.submitNewToDoItemBtn:hover, .showHidedoneListButton:hover  {
+  background-color: #b3b3b3;
+}
+
+/* to do items list and it children */
+.theList {
+  margin-top: 50px;
+}
+
+.itemToDo {
+  display: grid;
+  grid-template-columns: 60% 20% 20%;
+  font-size: 26px;
+  line-height: 50px;
+  margin-bottom: 10px;
+  word-break:break-all;
+}
+
+.doneItemButton {
+  margin-left: 25px;
+}
+
+.doneItemButton:hover {
+  background-color: #94b8b8;
+}
+
+.deleteItemButton {
+  margin-left: 5px;
+}
+
+.deleteItemButton:hover {
+  background-color: #d27979;
+}
+
+/* list of done items and it children */
+.showHideDoneListButton {
+  margin-top: 80px;
+  display: inline-flex;
+  align-items: center
+}
+
+.doneListTitle {
+  margin-right: 10px;
+}
+
+.showHidedoneListButton {
+  height: 55px;
+}
+
+.doneItemsList {
+  margin-top: -20px;
 }

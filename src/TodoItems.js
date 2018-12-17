@@ -3,11 +3,21 @@ import React, { Component } from 'react';
 class TodoItems extends Component {
   createTasks = item => {
     return (
-      <div key={item.key}>
-        <li>
-          <button onClick={() => this.props.doneItem(item.key)}>done</button>
+      <div key={item.key} className='toDoItemContainer'>
+        <li className='itemToDo'>
           {item.text}
-          <button onClick={() => this.props.deleteItem(item.key)}>del</button>
+          <button
+            onClick={() => this.props.doneItem(item.key)}
+            className='doneItemButton'
+          >
+            Done
+          </button>
+          <button
+            onClick={() => this.props.deleteItem(item.key)}
+            className='deleteItemButton'
+          >
+            Delete
+          </button>
         </li>
       </div>
     );

@@ -8,14 +8,17 @@ class TodoList extends Component {
   render() {
     return (
       <div className='todoListMain'>
-        <form onSubmit={this.props.addItem}>
+        <form onSubmit={this.props.addItem} className='todoForm'>
           <input
             placeholder='New task'
             ref={this.props.inputElement}
             value={this.props.currentItem.text}
             onChange={this.props.handleInput}
+            className='todoInput'
           />
-          <button type="submit">Add</button>
+          <button type='submit' className='submitNewToDoItemBtn'>
+            Add
+          </button>
         </form>
       </div>
     );

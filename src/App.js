@@ -16,7 +16,7 @@ class App extends React.Component {
       currentItem: { text: '', key: '' },
       toDoItems: [],
       doneItems: [],
-      showDoneList: { status: false, name: 'show' }
+      showDoneList: { status: false, name: 'Show' }
     };
     this.inputElement = React.createRef();
   }
@@ -91,11 +91,11 @@ class App extends React.Component {
 
     if (showDoneListStatus === false) {
       this.setState({
-        showDoneList: { status: !showDoneListStatus, name: 'hide' }
+        showDoneList: { status: !showDoneListStatus, name: 'Hide' }
       });
     } else {
       this.setState({
-        showDoneList: { status: !showDoneListStatus, name: 'show' }
+        showDoneList: { status: !showDoneListStatus, name: 'Show' }
       });
     }
   };
